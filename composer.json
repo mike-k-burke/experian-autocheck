@@ -1,0 +1,23 @@
+{
+    "name": "mike-k-burke/experian-autocheck",
+    "description": "API for retriving used car valuation data from the Experian Autocheck system",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Burke",
+            "email": "mkburke@hotmail.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MikeKBurke\\ExperianAutocheck\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "bespoke-support/reg": "^0.1.0",
+        "wa72/htmlpagedom": "^1.3"
+    }
+}
