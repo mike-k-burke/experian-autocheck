@@ -29,10 +29,6 @@ class ExperianAutocheckConvert
 
         $page = new HtmlPage($html);
 
-        $values = $page->filter('div#bbLiveData > div.bb > div.bb-header.bb-c33.bb-f13 > div.bb-header-right.bb-border-b > div.bb-header-right-c1 > div.bb-header-pad')->text();
-        $values = explode('£', $values);
-        $result['CapAverage'] = $values[2];
-
         $result['Vrm'] = trim($page->filter('p.reg')->text());
 
         $values = $page->filter('ul.list-info > li > b');
@@ -53,6 +49,12 @@ class ExperianAutocheckConvert
         }
         $result['provider'] = 'experian';
         $result['created'] = date('Y-m-d H:i:s');
+
+        $values = $page->filter('div#bbLiveData > div.bb > div.bb-header.bb-c33.bb-f13 > div.bb-header-right.bb-border-b > div.bb-header-right-c1 > div.bb-header-pad')->text();
+        $values = explode('£', $values);
+        if (isset($values[2])) {
+            $result['CapAverage'] = $values[2];
+        }
 
         $entity = new ExperianAutocheckEntity($result);
 
